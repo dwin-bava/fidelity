@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   font-family: 'Roboto', sans-serif !important;
 }
@@ -57,7 +61,7 @@ body {
 }
 
 .inp:focus{
-  outline: 2px solid orange;
+  outline: 2px solid #00b0ec;
   border: none;
 }
 

@@ -13,12 +13,11 @@ function App() {
     <div className="app" style={{}}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<CashDeposit />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/quo" element={<LoanQuo />} />
           <Route path="/cash" element={<CashCash />} />
           <Route path="/fid" element={<Loanfid />} />
           <Route path="/loan" element={<Loanapply />} />
-          <Route path="/quo" element={<LoanQuo />} />
-          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>

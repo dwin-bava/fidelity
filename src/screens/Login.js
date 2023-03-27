@@ -26,7 +26,7 @@ function Login() {
 
   const navigateToLoan = () => {
     // 👇️ navigate to /contacts
-    navigate("/Loan");
+    navigate("/quo");
   };
 
   const navigateHome = () => {
@@ -118,6 +118,7 @@ function Login() {
         <div style={{ flex: "0.4" }}></div>
         <div className="" style={{ flex: "0.5" }}>
           <div
+            className="logbg"
             style={{
               padding: "20px",
               border: "none",
@@ -179,7 +180,7 @@ function Login() {
                 <h5>Enter your password</h5>
               </div>
               <div>
-                <input className="inp" style={{ width: "100%" }}></input>
+                <input className="inp" type={'password'} style={{ width: "100%" }}></input>
               </div>
             </div>
             <div
@@ -197,9 +198,15 @@ function Login() {
               </div>
             </div>
             <br></br>
-            <div style={{ display: "flex", alignItems: "center" , justifyContent:'center'}}>
-              <div style={{ marginRight: "10px", marginTop:'-10px' }}>
-                <BsKeyboard size={25}/>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div style={{ marginRight: "10px", marginTop: "-10px" }}>
+                <BsKeyboard size={25} />
               </div>
               <div>
                 <h6>Use Virtual Keyboard</h6>
@@ -216,11 +223,12 @@ function Login() {
             >
               <ButtonComponent
                 label={"Sign in"}
+                // buttonBackgroundColor={"#00b0ec"}
                 buttonBackgroundColor={"#ff932a"}
                 buttonColor={"white"}
                 buttonHeight={"50px"}
                 buttonWidth={"250px"}
-                onClick={navigateHome}
+                onClick={navigateToLoan}
               />
             </div>
             <br></br>

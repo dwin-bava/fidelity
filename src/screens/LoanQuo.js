@@ -3,21 +3,27 @@ import InputField from "../components/fields/InputField";
 import fid from "../assets/fiiiiid.png";
 import { Button } from "@mantine/core";
 import { HiHome } from "react-icons/hi";
-import { Slider, RangeSlider, Checkbox } from "@mantine/core";
+// import { Slider, RangeSlider, Checkbox } from "@mantine/core";
 import ButtonComponent from "../components/button/ButtonComponent";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { FaMoneyCheckAlt } from "react-icons/fa";
-import { MdCalculate, MdMessage } from "react-icons/md";
-import { GrMoney } from "react-icons/gr";
+// import { FaMoneyCheckAlt } from "react-icons/fa";
+import { MdCalculate, MdMessage, MdPendingActions } from "react-icons/md";
+// import { GrMoney } from "react-icons/gr";
 import { GiReceiveMoney } from "react-icons/gi";
-import { HiDocument, HiDocumentAdd } from "react-icons/hi";
-import { AiFillEye } from "react-icons/ai";
+// import { HiDocument, HiDocumentAdd } from "react-icons/hi";
+import { AiFillEye, AiOutlineSearch } from "react-icons/ai";
 import { IoExit } from "react-icons/io5";
 import HeaderComponent from "../components/header/HeaderComponent";
-import Label from "../components/label/Label";
+// import Label from "../components/label/Label";
 import ListOfValue from "../components/fields/ListOfValue";
-import Box from "@mui/material/Box";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+// import Box from "@mui/material/Box";
+// import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+// import SelectField from "../components/fields/SelectField";
+import { Menu, Text } from "@mantine/core";
+import { BsFillCheckCircleFill } from "react-icons/bs";
+// import { useState } from "react";
+// import { Stepper, Group } from "@mantine/core";
+import ArrowStepper from '../components/arrow-stepper/arrow-stepper';
 
 const columns = [
   {
@@ -103,9 +109,14 @@ function LoanQuo() {
     navigate("/Loan");
   };
 
-  const navigateHome = () => {
+  // const navigateHome = () => {
+  //   // 👇️ navigate to /
+  //   navigate("/");
+  // };
+
+  const navigateToLogin = () => {
     // 👇️ navigate to /
-    navigate("/fid");
+    navigate("/");
   };
   return (
     <div>
@@ -118,25 +129,26 @@ function LoanQuo() {
             </div>
           </div>
           <div className="nav2">
-            <div>
-              <Button
-                variant="filled"
-                color="orange"
-                leftIcon={<HiHome size="1rem" />}
-              >
-                Home
-              </Button>
-            </div>
-            <div>
+            <div style={{ display: "flex", gap: "20px" }}>
+              <div>
+                <Button
+                  variant="filled"
+                  color="orange"
+                  leftIcon={<HiHome size="1rem" />}
+                >
+                  Home
+                </Button>
+              </div>
+              {/* <div>
               <Button
                 variant="filled"
                 color="orange"
                 leftIcon={<GiReceiveMoney size="1rem" />}
               >
-                Loan Application
+                Approved Loans
               </Button>
-            </div>
-            <div>
+            </div> */}
+              {/* <div>
               <Button
                 variant="filled"
                 color="orange"
@@ -144,39 +156,69 @@ function LoanQuo() {
               >
                 Messages
               </Button>
+            </div> */}
+              <div>
+                <Menu color={"orange"} shadow="md" width={200}>
+                  <Menu.Target>
+                    <Button leftIcon={<GiReceiveMoney size="1rem" />}>
+                      Options
+                    </Button>
+                  </Menu.Target>
+
+                  <Menu.Dropdown>
+                    <Menu.Label>Applications</Menu.Label>
+                    <Menu.Item
+                      icon={<AiOutlineSearch size={14} />}
+                      rightSection={
+                        <Text size="xs" color="dimmed">
+                          ⌘K
+                        </Text>
+                      }
+                    >
+                      Search
+                    </Menu.Item>
+                    <Menu.Item icon={<MdPendingActions size={14} />}>
+                      Pending Approvals
+                    </Menu.Item>
+                    <Menu.Item icon={<BsFillCheckCircleFill size={14} />}>
+                      Approved Loans
+                    </Menu.Item>
+                    <Menu.Item icon={<MdMessage size={14} />}>
+                      Messages
+                    </Menu.Item>
+
+                    <Menu.Divider />
+
+                    {/* <Menu.Item icon={<IconArrowsLeftRight size={14} />}>
+                    Transfer my data
+                  </Menu.Item> */}
+                    <Menu.Item
+                      color="red"
+                      icon={<IoExit size={14} />}
+                      onClick={navigateToLogin}
+                    >
+                      Logout
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
+              </div>
             </div>
-            <div>
-              <Button
-                variant="filled"
-                color="orange"
-                leftIcon={<HiDocument size="1rem" />}
-              >
-                Documents
-              </Button>
-            </div>
-            <div>
-              <Button
-                variant="filled"
-                color="orange"
-                leftIcon={<HiDocumentAdd size="1rem" />}
-              >
-                Start New Application
-              </Button>
-            </div>
-            <div>
+
+            {/* <div>
               <Button
                 variant="filled"
                 color="orange"
                 leftIcon={<AiFillEye size="1rem" />}
               >
-                Review
+                Pending Approvals
               </Button>
-            </div>
+            </div> */}
             <div>
               <Button
                 variant="filled"
                 color="orange"
                 leftIcon={<IoExit size="1rem" />}
+                onClick={navigateToLogin}
               >
                 Logout
               </Button>
@@ -192,7 +234,7 @@ function LoanQuo() {
           className=""
           style={{
             flex: "0.8",
-            padding: "10px",
+            padding: "15px",
             border: "none",
             boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
             backgroundColor: "white",
@@ -202,6 +244,9 @@ function LoanQuo() {
             <HeaderComponent
               title={"Loan Application"}
               icon={<GiReceiveMoney />}
+              backgroundColor={'black'}
+              color={'white'}
+              fontSize={'20px'}
             />
           </div>
           <br></br>
@@ -209,13 +254,37 @@ function LoanQuo() {
             <div></div>
             <div
               style={{
-                padding: "10px",
+                padding: "5px",
                 border: "none",
                 boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
                 backgroundColor: "white",
+                borderRadius: "5px",
+                width: "30%",
               }}
             >
-              <InputField label={"Application Number"} disabled />
+              <div>
+                <InputField
+                  label={"Application Number"}
+                  labelWidth={"50%"}
+                  disabled
+                />
+              </div>
+              <div style={{}}>
+                <InputField
+                  label={"Pep Status"}
+                  labelWidth={"50%"}
+                  disabled
+                  color={"red"}
+                />
+              </div>
+              <div style={{}}>
+                <InputField
+                  label={"Risk Status"}
+                  labelWidth={"50%"}
+                  disabled
+                  color={"red"}
+                />
+              </div>
             </div>
           </div>
           <br></br>
@@ -230,118 +299,71 @@ function LoanQuo() {
             <div style={{ borderBottom: "1px solid" }}>
               <h5>Account Details</h5>
             </div>
-            <br></br>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div>
-                <InputField label={"Customer Number"} required />
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  // justifyContent: "space-between",
+                  // marginRight: "160px",
+                  // gap: "56px",
+                }}
+              >
+                <div style={{ flex: "0.35" }}>
+                  <InputField
+                    label={"Customer Number"}
+                    required
+                    labelWidth={"50%"}
+                  />
+                </div>
+                <div style={{ flex: "0.2" }}>
+                  <InputField
+                    label={"Currency"}
+                    inputWidth={"80px"}
+                    labelWidth={"40%"}
+                    disabled
+                  />
+                </div>
+                <div style={{ flex: "0.4" }}>
+                  <InputField
+                    label={"Customer Type"}
+                    labelWidth={"37%"}
+                    inputWidth={"63%"}
+                    disabled
+                  />
+                </div>
               </div>
-              <div>
-                <InputField
-                  label={"Customer Type"}
-                  inputWidth={"220px"}
-                  disabled
-                />
-              </div>
-              <div>
-                <InputField label={"Currency"} inputWidth={"80px"} disabled />
-              </div>
-              <div>
-                <InputField
-                  label={"Account Number"}
-                  inputWidth={"220px"}
-                  disabled
-                />
+              <div
+                style={{
+                  display: "flex",
+                  // justifyContent: "space-between",
+                  // marginTop: "15px",
+                  // marginRight: "60px",
+                  // gap: "210px",
+                }}
+              >
+                <div style={{ flex: "0.55" }}>
+                  <ListOfValue
+                    label={"Servicing Account"}
+                    inputWidth={"60%"}
+                    labelWidth={"31%"}
+                  />
+                </div>
+                <div style={{ flex: "0.45" }}>
+                  <InputField
+                    label={"Customer Name"}
+                    inputWidth={"55%"}
+                    labelWidth={"33%"}
+                    disabled
+                  />
+                </div>
               </div>
             </div>
           </div>
           <br></br>
-          <div style={{ display: "flex", gap: "10px" }}>
-            <div
-              style={{
-                flex: "0.5",
-                padding: "20px",
-                border: "none",
-                boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-                backgroundColor: "white",
-                borderRadius: "5px",
-                border: "1px solid #cbd4d8",
-              }}
-            >
-              <div style={{}}>
-                <InputField label={"Effective Date"} labelWidth={"30%"} />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField
-                  label={"Loan Product"}
-                  labelWidth={"30%"}
-                  inputWidth={"60%"}
-                  required
-                />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField label={"Currency"} labelWidth={"30%"} required />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField
-                  label={"Facility Amount"}
-                  labelWidth={"30%"}
-                  inputWidth={"60%"}
-                  required
-                />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField label={"Interest Rate"} labelWidth={"30%"} />
-              </div>
-            </div>
-            <div
-              style={{
-                flex: "0.5",
-                padding: "20px",
-                border: "none",
-                boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-                backgroundColor: "white",
-                borderRadius: "5px",
-                border: "1px solid #cbd4d8",
-              }}
-            >
-              <div style={{}}>
-                <InputField
-                  label={"Interest Type"}
-                  labelWidth={"30%"}
-                  inputWidth={"60%"}
-                />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField
-                  label={"Principal Repay Freq."}
-                  labelWidth={"30%"}
-                  inputWidth={"60%"}
-                />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField
-                  label={"Interest Repay Freq."}
-                  labelWidth={"30%"}
-                  inputWidth={"60%"}
-                />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField
-                  label={"Tenor (Months)"}
-                  labelWidth={"30%"}
-                  inputWidth={"30%"}
-                  required
-                />
-              </div>
-              <div style={{ marginTop: "20px" }}>
-                <InputField
-                  label={"Last Working Day"}
-                  labelWidth={"30%"}
-                  inputWidth={"30%"}
-                />
-              </div>
-            </div>
+          <div>
+            <ArrowStepper/>
           </div>
+          
           <br></br>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div></div>
@@ -357,17 +379,17 @@ function LoanQuo() {
               </div>
               <div>
                 <ButtonComponent
-                  label={"Print"}
+                  label={"View Schedule"}
                   buttonBackgroundColor={"orange"}
                   buttonColor={"white"}
                   buttonHeight={"40px"}
-                  buttonWidth={"100px"}
+                  buttonWidth={"150px"}
                 />
               </div>
             </div>
           </div>
-          <br></br>
-          <div
+          {/* <br></br> */}
+          {/* <div
             style={{
               padding: "10px",
               border: "none",
@@ -375,9 +397,8 @@ function LoanQuo() {
               backgroundColor: "white",
             }}
           >
-            <div>
-              <div>
-                {/**Data Table */}
+            <div> */}
+              {/* <div>
                 <Box
                   sx={{
                     height: "180px",
@@ -402,20 +423,20 @@ function LoanQuo() {
                     components={{ Toolbar: GridToolbar }}
                   />
                 </Box>
-              </div>
-            </div>
+              </div> */}
+            {/* </div>
           </div>
-          <br></br>
+          <br></br> */}
           <div style={{ display: "flex" }}>
             <div>
-              <ButtonComponent
+              {/* <ButtonComponent
                 label={"Back"}
                 buttonBackgroundColor={"orange"}
                 buttonColor={"white"}
                 buttonHeight={"40px"}
                 buttonWidth={"100px"}
                 onClick={navigateHome}
-              />
+              /> */}
             </div>
             <div></div>
           </div>

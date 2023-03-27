@@ -1,31 +1,62 @@
+import { Select } from "@mantine/core";
 import React from "react";
-// import {TfiSearch} from 'react-icons/tfi'
-import { FcSearch } from '../../../node_modules/react-icons/fc/index.esm';
+import { IoMdSearch } from "react-icons/io";
 
-
-function ListOfValue({ labelWidth, inputWidth, type, label, maxLength }) {
-
+function ListOfValue({
+  labelWidth,
+  inputWidth,
+  placeholder,
+  label,
+  maxLength,
+  disabled,
+  required,
+  lovdata,
+}) {
+  const handleOpen = () => {
+    var focusTrigger = document.getElementById("theField");
+    focusTrigger.focus();
+    
+  };
+  if (lovdata) {
+    lovdata = lovdata;
+  } else {
+    lovdata = ["No data"];
+  }
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        margin: "40px",
+        margin: "10px",
+        // marginBottom: "20px",
         whiteSpace: "nowrap",
+        color: "rgb(92, 92, 92)",
       }}
     >
-      <label style={{ width: labelWidth, fontSize: "90%" }}>{label}</label>
-      <input
-        type={type}
-        className="inputField"
-        style={{ width: inputWidth, color: "#595959", backgroundColor: 'whitesmoke' }}
-        maxLength={maxLength}
-        disabled
-        
+      <label style={{ width: labelWidth, fontSize: "85%" }}>
+        {label}
+        {required ? <span style={{ color: "red" }}> *</span> : null}
+      </label>
+
+      <Select
+        placeholder={placeholder}
+        style={{
+          width: inputWidth,
+          borderRadius: "3px",
+          border: "none",
+          fontsize: "90%",
+          // paddingLeft: "7px",
+        }}
+        disabled={disabled}
+        searchable
+        size={"xs"}
+        id="listOfValue"
+        rightSection={
+          <IoMdSearch style={{ marginLeft: "15px" }} size={18} color="grey" />
+        }
+        styles={{ rightSection: { pointerEvents: "none" } }}
+        data={lovdata}
       />
-      <button style={{ height: "36px",borderRadius:'3px',marginLeft:'1.5px', border:'1px solid rgb(157, 157, 157)', textAlign: 'center',  boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px', backgroundColor:"#e1e8f0"}}>
-        <FcSearch  size={20} />
-      </button>
     </div>
   );
 }
