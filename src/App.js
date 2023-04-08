@@ -7,6 +7,9 @@ import Loanfid from './screens/Loanfid';
 import Loanapply from './screens/Loanapply';
 import LoanQuo from './screens/LoanQuo';
 import Login from './screens/Login';
+import Approval from "./screens/Approval";
+import Enquiry from "./screens/Enquiry";
+import MyApprovals from "./screens/central-approval/my-approvals";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route path="/cash" element={<CashCash />} />
           <Route path="/fid" element={<Loanfid />} />
           <Route path="/loan" element={<Loanapply />} />
+          <Route path="/apprv" element={<Approval />} />
+          <Route path="/enq" element={<Enquiry />} />
+          
         </Routes>
       </BrowserRouter>
     </div>

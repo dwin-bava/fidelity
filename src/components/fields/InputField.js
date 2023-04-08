@@ -12,6 +12,7 @@ function InputField({
   required,
   value,
   color,
+  onChange
 }) {
   // disabled & required should be true or false, width should be in percentages, type: tel, number, text
   return (
@@ -39,6 +40,7 @@ function InputField({
           // inputFormat="DD/MM/YYYY"
           placeholder="Pick a date"
           id="dateField"
+          onChange={onChange}
           rightSection={<IoCalendarOutline size={18} color="grey" />}
           styles={{ rightSection: { pointerEvents: "none" } }}
         />
@@ -52,6 +54,7 @@ function InputField({
           disabled={disabled}
           required={required}
           value={value}
+          onChange={onChange}
         />
       )}
     </div>

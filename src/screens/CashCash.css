@@ -9,9 +9,11 @@ body{
     /* background-color:#fbece161 !important; */
     /* background-image: url('../assets/bgfidd.jpg') !important;  */
     /* background-image: url('../assets/zzz.jpg'); */
-    /* background-image: url('../assets/loginbg.jpg') !important ; */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/bg14.jpg');
+    background-image: url('../assets/bg16.jpg') !important ;
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../assets/bg16.jpg'); */
     /* background-color: #FAFAFA !important; */
+    /* background-color: #eaeaea !important; */
+    /* height: auto; */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -24,18 +26,24 @@ body{
     /* background-image: url('../assets/bg8.jpg') !important; */
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: right;
-    /* background-image: url('../assets/bg11.jpg'); */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/bg17.jpg');
+    background-position: left;
+    background-image: url('../assets/bg21.jpg');
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/bg19.jpg'); */
     /* background-blend-mode: darken !important; */
 }
 
-.logbg{
+.modal-backk {
+    /* background-color: red !important; */
+    width:100% !important;
+    height: 100% !important;
+}
+
+/* .logbg{
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url('../assets/bg15.jpg');
     background-position: right;
-}
+} */
 /* #root{
     margin: 0;
 }

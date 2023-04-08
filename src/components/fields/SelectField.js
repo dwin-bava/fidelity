@@ -4,25 +4,49 @@ import { Link } from "react-router-dom";
 import { IoMdSearch } from "react-icons/io";
 import { FiChevronDown } from "react-icons/fi";
 
-function SelectField({ labelWidth, inputWidth, label, placeholder }) {
+function SelectField({
+  labelWidth,
+  inputWidth,
+  label,
+  placeholder,
+  required,
+  onChange,
+  lovdata,
+  // fontSize,
+  // fontWeight,
+}) {
   //   const dat = ["male", "female", "other"];
+  const handleOpen = () => {
+    var focusTrigger = document.getElementById("theField");
+    focusTrigger.focus();
+  };
+  if (lovdata) {
+    lovdata = lovdata;
+  } else {
+    lovdata = ["No data"];
+  }
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
         // marginBottom: "15px",
-        margin:'10px',
+        margin: "10px",
         whiteSpace: "nowrap",
         color: "rgb(92, 92, 92)",
       }}
     >
-      <label style={{ width: labelWidth, fontSize: "85%" }}>{label}</label>
+      <label style={{ width: labelWidth, fontSize: '85%' }}>
+        {label}
+        {required ? <span style={{ color: "red" }}> *</span> : null}
+      </label>
       <Select
         placeholder={placeholder}
         style={{
           width: inputWidth,
+          backgroundColor: "white",
         }}
+        onChange={onChange}
         variant="unstyled"
         searchable
         size={"xs"}
@@ -35,12 +59,7 @@ function SelectField({ labelWidth, inputWidth, label, placeholder }) {
           />
         }
         styles={{ rightSection: { pointerEvents: "none" } }}
-        data={[
-          { value: "react", label: "No Data" },
-          // { value: "ng", label: "001 - Angular" },
-          // { value: "svelte", label: "002 - Svelte" },
-          // { value: "vue", label: "003 - Vue" },
-        ]}
+        data={lovdata}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../components/fields/InputField";
 import fid from "../assets/fiiiiid.png";
 import { Button } from "@mantine/core";
@@ -7,11 +7,17 @@ import { HiHome } from "react-icons/hi";
 import ButtonComponent from "../components/button/ButtonComponent";
 import { Routes, Route, useNavigate } from "react-router-dom";
 // import { FaMoneyCheckAlt } from "react-icons/fa";
-import { MdCalculate, MdMessage, MdPendingActions } from "react-icons/md";
+import {
+  MdCalculate,
+  MdMessage,
+  MdPendingActions,
+  MdOutlineMenu,
+} from "react-icons/md";
 // import { GrMoney } from "react-icons/gr";
 import { GiReceiveMoney } from "react-icons/gi";
 // import { HiDocument, HiDocumentAdd } from "react-icons/hi";
 import { AiFillEye, AiOutlineSearch } from "react-icons/ai";
+import { HiOutlineMenu } from "react-icons/hi";
 import { IoExit } from "react-icons/io5";
 import HeaderComponent from "../components/header/HeaderComponent";
 // import Label from "../components/label/Label";
@@ -23,7 +29,9 @@ import { Menu, Text } from "@mantine/core";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 // import { useState } from "react";
 // import { Stepper, Group } from "@mantine/core";
-import ArrowStepper from '../components/arrow-stepper/arrow-stepper';
+import ArrowStepper from "../components/arrow-stepper/arrow-stepper";
+import { Modal } from "react-bootstrap";
+import DataTable from "../components/data-table/DataTable";
 
 const columns = [
   {
@@ -102,6 +110,16 @@ const columns = [
 const rows = [];
 
 function LoanQuo() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const navigate = useNavigate();
 
   const navigateToLoan = () => {
@@ -130,8 +148,9 @@ function LoanQuo() {
           </div>
           <div className="nav2">
             <div style={{ display: "flex", gap: "20px" }}>
-              <div>
+              <div style={{ marginTop: "-5px" }}>
                 <Button
+                  size="md"
                   variant="filled"
                   color="orange"
                   leftIcon={<HiHome size="1rem" />}
@@ -157,11 +176,23 @@ function LoanQuo() {
                 Messages
               </Button>
             </div> */}
+            </div>
+
+            {/* <div>
+              <Button
+                variant="filled"
+                color="orange"
+                leftIcon={<AiFillEye size="1rem" />}
+              >
+                Pending Approvals 
+              </Button>
+            </div> */}
+            <div style={{ display: "flex" }}>
               <div>
                 <Menu color={"orange"} shadow="md" width={200}>
                   <Menu.Target>
-                    <Button leftIcon={<GiReceiveMoney size="1rem" />}>
-                      Options
+                    <Button icon={<GiReceiveMoney size="1rem" />}>
+                      <HiOutlineMenu size={27} />
                     </Button>
                   </Menu.Target>
 
@@ -202,26 +233,16 @@ function LoanQuo() {
                   </Menu.Dropdown>
                 </Menu>
               </div>
-            </div>
-
-            {/* <div>
-              <Button
-                variant="filled"
-                color="orange"
-                leftIcon={<AiFillEye size="1rem" />}
-              >
-                Pending Approvals
-              </Button>
-            </div> */}
-            <div>
-              <Button
-                variant="filled"
-                color="orange"
-                leftIcon={<IoExit size="1rem" />}
-                onClick={navigateToLogin}
-              >
-                Logout
-              </Button>
+              {/* <div>
+                <Button
+                  variant="filled"
+                  color="orange"
+                  leftIcon={<IoExit size="1rem" />}
+                  onClick={navigateToLogin}
+                >
+                  Logout
+                </Button>
+              </div> */}
             </div>
           </div>
         </div>
@@ -244,9 +265,9 @@ function LoanQuo() {
             <HeaderComponent
               title={"Loan Application"}
               icon={<GiReceiveMoney />}
-              backgroundColor={'black'}
-              color={'white'}
-              fontSize={'20px'}
+              backgroundColor={"black"}
+              color={"white"}
+              fontSize={"20px"}
             />
           </div>
           <br></br>
@@ -255,7 +276,7 @@ function LoanQuo() {
             <div
               style={{
                 padding: "5px",
-                border: "none",
+                border: "0.5px solid #d6d7d9",
                 boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
                 backgroundColor: "white",
                 borderRadius: "5px",
@@ -291,9 +312,10 @@ function LoanQuo() {
           <div
             style={{
               padding: "10px",
-              border: "none",
+              border: "0.5px solid #d6d7d9",
               boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
               backgroundColor: "white",
+              borderRadius: "5px",
             }}
           >
             <div style={{ borderBottom: "1px solid" }}>
@@ -361,31 +383,32 @@ function LoanQuo() {
           </div>
           <br></br>
           <div>
-            <ArrowStepper/>
+            <ArrowStepper />
           </div>
-          
+
           <br></br>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div></div>
             <div style={{ display: "flex", gap: "20px" }}>
               <div>
-                <ButtonComponent
+                {/* <ButtonComponent
                   label={"Apply"}
                   buttonBackgroundColor={"orange"}
                   buttonColor={"white"}
                   buttonHeight={"40px"}
                   buttonWidth={"100px"}
-                />
+                /> */}
               </div>
-              <div>
+              {/* <div>
                 <ButtonComponent
                   label={"View Schedule"}
                   buttonBackgroundColor={"orange"}
                   buttonColor={"white"}
                   buttonHeight={"40px"}
                   buttonWidth={"150px"}
+                  onClick={handleButtonClick}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           {/* <br></br> */}
@@ -398,7 +421,7 @@ function LoanQuo() {
             }}
           >
             <div> */}
-              {/* <div>
+          {/* <div>
                 <Box
                   sx={{
                     height: "180px",
@@ -424,7 +447,7 @@ function LoanQuo() {
                   />
                 </Box>
               </div> */}
-            {/* </div>
+          {/* </div>
           </div>
           <br></br> */}
           <div style={{ display: "flex" }}>
@@ -443,6 +466,7 @@ function LoanQuo() {
         </div>
         <div style={{ flex: "0.1" }}></div>
       </div>
+
       <br></br>
     </div>
   );

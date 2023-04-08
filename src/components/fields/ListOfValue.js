@@ -11,6 +11,7 @@ function ListOfValue({
   disabled,
   required,
   lovdata,
+  onChange,
 }) {
   const handleOpen = () => {
     var focusTrigger = document.getElementById("theField");
@@ -48,6 +49,7 @@ function ListOfValue({
           // paddingLeft: "7px",
         }}
         disabled={disabled}
+        onChange={onChange}
         searchable
         size={"xs"}
         id="listOfValue"

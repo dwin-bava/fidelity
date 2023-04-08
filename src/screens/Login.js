@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InputField from "../components/fields/InputField";
 import fid from "../assets/fiiiiid.png";
 import { Button } from "@mantine/core";
@@ -23,15 +23,28 @@ import {BsKeyboard} from 'react-icons/bs'
 
 function Login() {
   const navigate = useNavigate();
+  const [username , setUsername] = useState("")
 
   const navigateToLoan = () => {
-    // 👇️ navigate to /contacts
+    // 👇️ navigate to Loan Quotation
     navigate("/quo");
   };
+
+  const handleLogin = ()=>{
+    if(username === "master"){
+navigate("/enq")
+    }else{
+navigate("/quo");
+    }
+  }
 
   const navigateHome = () => {
     // 👇️ navigate to /
     navigate("/fid");
+  };
+  const navigateToEnquiry = () => {
+    // 👇️ navigate to /
+    navigate("/enq");
   };
   return (
     <div className="loglog">
@@ -162,7 +175,7 @@ function Login() {
                 </div>
               </div>
               <div>
-                <input className="inp" style={{ width: "100%" }}></input>
+                <input className="inp" onChange={(e)=>setUsername(e.target.value)} style={{ width: "100%" }}></input>
               </div>
             </div>
             <div style={{ marginTop: "30px" }}>
@@ -228,7 +241,7 @@ function Login() {
                 buttonColor={"white"}
                 buttonHeight={"50px"}
                 buttonWidth={"250px"}
-                onClick={navigateToLoan}
+                onClick={handleLogin}
               />
             </div>
             <br></br>
