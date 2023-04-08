@@ -205,7 +205,7 @@ const handleShow = () => setShow(true);
             backdropClassName="modal-backk"
           >
             <Modal.Header closeButton>
-              <Modal.Title>Facility Enquiry</Modal.Title>
+              <Modal.Title>Facility Enquiries</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <FacilityEnquiry />
